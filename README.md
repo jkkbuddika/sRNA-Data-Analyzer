@@ -55,7 +55,7 @@ ls
 
 At this point, your home directory will have a directory named *scripts* with all individual modules of the python analysis pipeline.
 ### Step 2: Download additional materials
-In addition to above tools, this pipeline integrates [TagDust2](http://tagdust.sourceforge.net/) to remove rRNAs, the major form of RNA contaminant during early steps of analysis. We will download the singularity image from [GoSTRIPES](https://github.com/BrendelGroup/GoSTRIPES) workflow to use TagDust2 in this analysis. For this:
+This data analysis pipeline integrates [TagDust2](http://tagdust.sourceforge.net/) to remove rRNAs, the major form of RNA contaminant during early steps of analysis. You can directly [download](https://sourceforge.net/projects/tagdust/) and [install](http://tagdust.sourceforge.net/#install) TagDust2 on to your local environment and include the path to executables into your PATH environment. Alternatively in this manual, we will download the singularity image from [GoSTRIPES](https://github.com/BrendelGroup/GoSTRIPES) workflow to use TagDust2. For this:
 ```
 mkdir add_mat
 cd add_mat
