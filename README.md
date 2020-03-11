@@ -22,7 +22,7 @@ We thank developers of these valueble tools!
 Start data analysis with setting up a conda environment with all the above tools installed, as it gives you the opportunity to use most updated versions. To set up the conda environment (i.e., srna_analyzer):
 ```
 conda create -n srna_analyzer -c conda-forge -c bioconda python=3.7
-conda install -n srna_analyzer -c conda-forge -c bioconda fastqc cutadapt bowtie2 qualimap shortstack samtools deeptools subread multiqc
+conda install -n srna_analyzer -c conda-forge -c bioconda fastqc cutadapt bowtie2 qualimap shortstack samtools deeptools subread multiqc pandas
 ```
 To update your conda environment:
 ```
@@ -48,7 +48,7 @@ Once cloning is completed:
 ```
 mkdir scripts
 mv sRNA-Data-Analyzer/Modules/*.py scripts/
-rm -rf sRNA-Data-Analyzer.git
+rm -rf sRNA-Data-Analyzer
 ls
 ```
 > scripts   
