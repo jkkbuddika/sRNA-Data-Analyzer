@@ -65,3 +65,21 @@ cd ..
 ```
 Now that we have downloaded the singularity image to call and run TagDust2, next step is to download the most updated rRNA sequence list from Ensembl [BioMart](http://useast.ensembl.org/biomart/martview/b56f6bc18af941cb4a61c1ef121b91d1). For example, [click here](https://www.ensembl.org/biomart/martview/67dcc0a3e364a6154fcdfd992dcdbdf2) to download Drosophila rRNA sequence list to your local computer, rename the file name (i.e., "Dro_rRNA.txt") and transfer the file to *add_mat* directory.
 At the end of this step your home directory will have a second directory named *add_mat* with the "gostripes" singularity image and a .txt file with rRNA sequences to be removed (i.e., "Dro_rRNA.txt").
+### Step 3: Analysis mode selection and defining additional experiment specific variables
+To specify experiment specific variables, open and update "GeneralVariables.py" module using emacs text editor.
+```
+cd scripts
+emacs GeneralVariables.py
+```
+- Specify the name of the rRNA sequence list in *add_mat* directory by updating the string value of variable **rRNA_list**.
+- You can customize Bowtie2 alignment parameters by updating the string value of variable **bowtie2_para**.
+- To specify the strandedness of the experiment change the value of variable "stranded". Options are 0 (unstranded), 1 (stranded) and 2 (reversely stranded).
+- You can define which features to be counted using featureCounts by updating values of the list **diff_features**. To check supported features, download and open the annotation file using "less" command.
+Once necessary changes are being made:
+```
+Ctrl+x+s then Ctrl+x+c ## To save and quit emacs
+cd ..
+ls
+```
+> add_mat  
+> scripts
