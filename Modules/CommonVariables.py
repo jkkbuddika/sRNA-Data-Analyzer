@@ -5,7 +5,7 @@ class CommonVariables:
     gv = GeneralVariables.GeneralVariables()
 
     ## General
-    home_dir = os.path.dirname(os.getcwd())
+    home_dir = os.path.dirname(os.getcwd()) + '/'
     raw_sequences_dir = home_dir + 'raw_sequences/'
     add_mat = home_dir + 'add_mat/'
     Threads = '8'
@@ -26,8 +26,9 @@ class CommonVariables:
     fastqc_bam = 'fastqc_mapped'
 
     ## Genome sequences, annotations and Bowtie Indices
-    genome_file = os.path.basename(gv.genome)
-    genome_path = os.path.dirname(gv.genome) + '/'
+    genome = 'http://igenomes.illumina.com.s3-website-us-east-1.amazonaws.com/Drosophila_melanogaster/UCSC/dm6/Drosophila_melanogaster_UCSC_dm6.tar.gz'
+    genome_file = os.path.basename(genome)
+    genome_path = os.path.dirname(genome) + '/'
     genome_url = genome_path + genome_file
     genome_dir_name = 'genome'
     genome_dir = home_dir + 'genome/'
@@ -36,8 +37,9 @@ class CommonVariables:
     genes_gtf = dm6_path + 'Annotation/Genes/genes.gtf'
     bowtie2_index = genome_dir + 'Drosophila_melanogaster/UCSC/dm6/Sequence/Bowtie2Index/genome'
     bowtie_index = genome_dir + 'Drosophila_melanogaster/UCSC/dm6/Sequence/BowtieIndex/genome.fa'
-    feature_file = os.path.basename(gv.feature)
-    feature_path = os.path.dirname(gv.feature) + '/'
+    feature = 'ftp://ftp.flybase.net/genomes/Drosophila_melanogaster/dmel_r6.32_FB2020_01/gtf/dmel-all-r6.32.gtf.gz'
+    feature_file = os.path.basename(feature)
+    feature_path = os.path.dirname(feature) + '/'
     feature_url = feature_path + feature_file
     feature_dir_name = 'genome_feature'
     feature_dir = home_dir + 'genome_feature/'

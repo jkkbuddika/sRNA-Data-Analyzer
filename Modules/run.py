@@ -22,9 +22,11 @@ print(ctw.CRED + 'This script can take minutes to hours to analyze your data bas
 gv = GeneralVariables.GeneralVariables()
 cv = CommonVariables.CommonVariables()
 
+# Working
 qc_raw = FastQCRunner.FastQCRunner(cv.home_dir, cv.fastqc_raw, cv.raw_sequences_dir, cv.file_type[0])
 qc_raw.fastqc()
 
+# Working
 ca = CutAdapt.CutAdapt(cv.home_dir, cv.raw_sequences_dir, cv.extensions, cv.cutadapt_dir)
 ca.cutadapt()
 

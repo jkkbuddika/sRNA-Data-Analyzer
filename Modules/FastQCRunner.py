@@ -22,12 +22,12 @@ class FastQCRunner:
 
         print(ctw.CBEIGE + ctw.CBOLD + 'Running FastQC ...' + ctw.CEND)
 
-        for input_file in fastq_list:
+        for i in fastq_list:
 
             print('\n')
 
             command = [
-                'fastqc', input_file,
+                'fastqc', i,
                 '-o', outdir
             ]
 

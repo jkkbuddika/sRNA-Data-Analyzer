@@ -29,8 +29,8 @@ class CutAdapt:
             illumina_adap = 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
 
             command = [
-                'cutadapt -m 18 -M 30',
-                '-a NNNN...NNNN' + illumina_adap,
+                'cutadapt -m 18 -M 30 -u 4',
+                '-a NNNN' + illumina_adap,
                 '-o', output_file, i,
                 '>', output_file.split('_trimmed')[0] + '_trim.matrics' + self.extensions[3]
             ]
