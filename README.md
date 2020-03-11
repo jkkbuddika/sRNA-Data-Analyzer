@@ -47,7 +47,7 @@ git clone https://github.com/jkkbuddika/sRNA-Data-Analyzer.git
 Once cloning is completed:
 ```
 mkdir scripts
-mv sRNA-Data-Analyzer.git/Modules/*.py scripts/
+mv sRNA-Data-Analyzer/Modules/*.py scripts/
 rm -rf sRNA-Data-Analyzer.git
 ls
 ```
