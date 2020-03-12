@@ -58,6 +58,7 @@ cv = CommonVariables.CommonVariables()
 #ssa = ShortStack.ShortStack(cv.home_dir, cv.tagdust_out, cv.bowtie_index)
 #ssa.ss_aligner()
 
+
 ss = SamTools.SamTools(cv.home_dir, cv.bt2_aligned, cv.Threads, cv.extensions, cv.genes_gtf)
 ss.sam_sorting()
 
