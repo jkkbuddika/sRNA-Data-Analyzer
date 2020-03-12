@@ -23,35 +23,42 @@ gv = GeneralVariables.GeneralVariables()
 cv = CommonVariables.CommonVariables()
 
 # Working
-qc_raw = FastQCRunner.FastQCRunner(cv.home_dir, cv.fastqc_raw, cv.raw_sequences_dir, cv.file_type[0])
-qc_raw.fastqc()
+#qc_raw = FastQCRunner.FastQCRunner(cv.home_dir, cv.fastqc_raw, cv.raw_sequences_dir, cv.file_type[0])
+#qc_raw.fastqc()
 
 # Working
-ca = CutAdapt.CutAdapt(cv.home_dir, cv.raw_sequences_dir, cv.extensions, cv.cutadapt_dir)
-ca.cutadapt()
+#ca = CutAdapt.CutAdapt(cv.home_dir, cv.raw_sequences_dir, cv.extensions, cv.cutadapt_dir)
+#ca.cutadapt()
 
-td = Tagduster.Tagduster(cv.home_dir, cv.tagdust_singu, cv.raw_sequences_dir, cv.rRNA_path, cv.extensions)
-td.tagdust()
+# Working
+#td = Tagduster.Tagduster(cv.home_dir, cv.tagdust_singu, cv.cutadapt_dir, cv.rRNA_path, cv.extensions)
+#td.tagdust()
 
-tdsp = TDSummaryProcessor.TDSummaryProcessor(cv.tagdust_out, cv.summary_dir)
-tdsp.td_summary()
+# Working
+#tdsp = TDSummaryProcessor.TDSummaryProcessor(cv.home_dir, cv.tagdust_out)
+#tdsp.td_summary()
 
-wd = WebDownloader.WebDownloader(cv.home_dir, cv.genome_dir_name, cv.genome_path, cv.genome_file)
-wd.download()
+# Working
+#wd = WebDownloader.WebDownloader(cv.home_dir, cv.genome_dir_name, cv.genome_path, cv.genome_file)
+#wd.download()
 
-wd = WebDownloader.WebDownloader(cv.home_dir, cv.feature_dir_name, cv.feature_path, cv.feature_file)
-wd.download()
+# Working
+#wd = WebDownloader.WebDownloader(cv.home_dir, cv.feature_dir_name, cv.feature_path, cv.feature_file)
+#wd.download()
 
-bt2 = Bt2Aligner.Bt2Aligner(cv.home_dir, cv.tagdust_out, cv.Threads, cv.bowtie2_index, gv.bowtie2_para, cv.extensions)
-bt2.aligner()
+# Working
+#bt2 = Bt2Aligner.Bt2Aligner(cv.home_dir, cv.tagdust_out, cv.Threads, cv.bowtie2_index, gv.bowtie2_para, cv.extensions)
+#bt2.aligner()
 
-qc_mapped = FastQCRunner.FastQCRunner(cv.home_dir, cv.fastqc_bam, cv.bt2_aligned, cv.file_type[1])
-qc_mapped.fastqc()
+# Working
+#qc_mapped = FastQCRunner.FastQCRunner(cv.home_dir, cv.fastqc_bam, cv.bt2_aligned, cv.file_type[1])
+#qc_mapped.fastqc()
 
-ssa = ShortStack.ShortStack(cv.home_dir, cv.cutadapt_dir, cv.bowtie_index)
-ssa.ss_aligner()
+# Working
+#ssa = ShortStack.ShortStack(cv.home_dir, cv.tagdust_out, cv.bowtie_index)
+#ssa.ss_aligner()
 
-ss = SamTools.SamTools(cv.bt2_aligned, cv.Threads, cv.extensions, cv.sam_sorted)
+ss = SamTools.SamTools(cv.home_dir, cv.bt2_aligned, cv.Threads, cv.extensions, cv.genes_gtf)
 ss.sam_sorting()
 
 bw = BigWigFileMaker.BigWigFileMaker(cv.home_dir, cv.sam_sorted, cv.extensions)

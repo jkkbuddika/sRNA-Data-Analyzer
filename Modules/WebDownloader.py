@@ -25,7 +25,7 @@ class WebDownloader:
         print(ctw.CBLUE + self.download_file + ctw.CRED + ' Downloaded!!!' + ctw.CEND)
 
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        te = TarExtractor.TarExtractor(dir_path + '/' + self.download_file, self.output_dir)
+        te = TarExtractor.TarExtractor(dir_path + '/' + self.download_file, outdir + '/')
         te.tar_extractor()
 
         if self.download_file.endswith('.tar.gz'):

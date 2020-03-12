@@ -28,11 +28,11 @@ class TDSummaryProcessor:
         frames = []
         column_headers = []
 
-        for input_file in file_list:
+        for i in file_list:
 
-            column_headers.append(input_file.split(self.input_dir)[1].split('_tagdustout')[0])
+            column_headers.append(os.path.basename(i).split('_tagdustout')[0])
 
-            with open(input_file) as f:
+            with open(i) as f:
                 content = f.readlines()
                 id = 0
                 summary = ''
@@ -49,7 +49,7 @@ class TDSummaryProcessor:
                     if id == 4:
                         break
 
-                td_details = pd.DataFrame({input_file: summary_list})
+                td_details = pd.DataFrame({i: summary_list})
 
                 if count == 0:
                     frames = [td_summary, td_details]
@@ -57,7 +57,6 @@ class TDSummaryProcessor:
 
                 else:
                     frames.append(td_details)
-
 
         df = pd.concat(frames, axis=1)
         summary_column_header = 'Summary'

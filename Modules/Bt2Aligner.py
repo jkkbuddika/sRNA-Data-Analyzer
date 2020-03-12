@@ -30,11 +30,11 @@ class Bt2Aligner:
             output_file = outdir + '/' + os.path.basename(i).split('tagdustout.fq')[0] + 'aligned' + self.extensions[4]
 
             command = [
-                'module load bowtie2/intel/2.3.2;bowtie2 -p',
-                self.threads, '-x', self.bt2_index,
+                'bowtie2',
+                '-p', self.threads, '-x', self.bt2_index,
                 self.bt2_parameter, '-q', i,
                 '-S', output_file,
-                '2>', output_file.split(self.extensions[4]) + self.extensions[3]
+                '2>', output_file.split(self.extensions[4])[0] + self.extensions[3]
             ]
 
             command = ' '.join(command)
