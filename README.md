@@ -19,18 +19,18 @@ The sRNA-seq data analyzer requires following tools to be installed for data ana
 We thank developers of these valueble tools!
 
 ## Getting started
-Start data analysis with setting up a conda environment with all the above tools installed, as it gives you the opportunity to use most updated versions. To set up the conda environment (i.e., srna_analyzer):
+Start data analysis with setting up a conda environment with all the above tools installed, as it gives you the opportunity to use most updated versions. To set up the conda environment (i.e., dataanalyzer):
 ```
-conda create -n srna_analyzer -c conda-forge -c bioconda python=3.7
-conda install -n srna_analyzer -c conda-forge -c bioconda fastqc cutadapt bowtie2 qualimap shortstack samtools deeptools subread multiqc pandas
+conda create -n dataanalyzer -c conda-forge -c bioconda python=3.7
+conda install -n dataanalyzer -c conda-forge -c bioconda fastqc cutadapt bowtie2 qualimap shortstack samtools deeptools subread multiqc pandas
 ```
 To update your conda environment:
 ```
-conda update -n srna_analyzer -c conda-forge -c bioconda --all
+conda update -n dataanalyzer -c conda-forge -c bioconda --all
 ```
 To activate the enironment:
 ```
-source activate srna_analyzer
+source activate dataanalyzer
 ```
 To deactivate the environment:
 ```
