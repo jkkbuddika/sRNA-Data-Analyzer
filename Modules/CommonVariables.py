@@ -26,33 +26,24 @@ class CommonVariables:
     fastqc_bam = 'fastqc_mapped'
 
     ## Genome sequences, annotations and Bowtie Indices
-    genome = 'http://igenomes.illumina.com.s3-website-us-east-1.amazonaws.com/Drosophila_melanogaster/UCSC/dm6/Drosophila_melanogaster_UCSC_dm6.tar.gz'
-    genome_file = os.path.basename(genome)
-    genome_path = os.path.dirname(genome) + '/'
-    genome_url = genome_path + genome_file
+    genome_file = os.path.basename(gv.genome)
+    genome_path = os.path.dirname(gv.genome) + '/'
     genome_dir_name = 'genome'
     genome_dir = home_dir + 'genome/'
-    dm6_path = home_dir + 'genome/Drosophila_melanogaster/UCSC/dm6/'
-    genome_fa = dm6_path + 'Sequence/WholeGenomeFasta/genome.fa'
-    genes_gtf = dm6_path + 'Annotation/Genes/genes.gtf'
-    bowtie2_index = genome_dir + 'Drosophila_melanogaster/UCSC/dm6/Sequence/Bowtie2Index/genome'
-    bowtie_index = genome_dir + 'Drosophila_melanogaster/UCSC/dm6/Sequence/BowtieIndex/genome.fa'
-    feature = 'ftp://ftp.flybase.net/genomes/Drosophila_melanogaster/dmel_r6.32_FB2020_01/gtf/dmel-all-r6.32.gtf.gz'
-    feature_file = os.path.basename(feature)
-    feature_path = os.path.dirname(feature) + '/'
-    feature_url = feature_path + feature_file
+    genome_fa = genome_dir + os.path.splitext(genome_file)[0]
+    feature_file = os.path.basename(gv.feature)
+    feature_path = os.path.dirname(gv.feature) + '/'
     feature_dir_name = 'genome_feature'
     feature_dir = home_dir + 'genome_feature/'
+    genes_gtf = feature_dir + os.path.splitext(feature_file)[0]
 
     ## Alignment Variables
+    bt2_index = home_dir + 'bt2_index/'
     bt2_aligned = home_dir + 'bt2_aligned/'
     shortstack_aligned = home_dir + 'shortstack_aligned/'
 
     ## Sam Tools Sorting
     sam_sorted = home_dir + 'sam_sorted/'
-
-    ## DeepTools BigWig Files
-    bigwig_files = home_dir + 'bigwig_files/'
 
     ## FeatureCounts
     fc_output = home_dir + 'feature_counts'

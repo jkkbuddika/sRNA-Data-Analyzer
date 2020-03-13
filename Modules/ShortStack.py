@@ -5,10 +5,10 @@ import ColorTextWriter
 
 class ShortStack:
 
-    def __init__(self, home_dir, input_dir, bt_index):
+    def __init__(self, home_dir, input_dir, genome_fa):
         self.home_dir = home_dir
         self.input_dir = input_dir
-        self.bt_index = bt_index
+        self.genome_fa = genome_fa
 
     def ss_aligner(self):
 
@@ -29,7 +29,7 @@ class ShortStack:
 
             command = [
                 'ShortStack',
-                '--genomefile', self.bt_index,
+                '--genomefile', self.genome_fa,
                 '--readfile', i,
                 '--outdir', sub_directory
             ]

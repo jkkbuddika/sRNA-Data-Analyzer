@@ -5,7 +5,7 @@ import ColorTextWriter
 
 class Bt2Aligner:
 
-    def __init__(self, home_dir, input_dir, threads, bt2_index, bt2_parameter, extensions):
+    def __init__(self, home_dir, input_dir, threads,  bt2_index, bt2_parameter, extensions):
         self.home_dir = home_dir
         self.input_dir = input_dir
         self.threads = threads
@@ -31,7 +31,7 @@ class Bt2Aligner:
 
             command = [
                 'bowtie2',
-                '-p', self.threads, '-x', self.bt2_index,
+                '-p', self.threads, '-x', self.bt2_index + 'bt2_index',
                 self.bt2_parameter, '-q', i,
                 '-S', output_file,
                 '2>', output_file.split(self.extensions[4])[0] + self.extensions[3]

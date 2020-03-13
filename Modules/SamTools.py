@@ -10,7 +10,7 @@ class SamTools():
         self.input_dir = input_dir
         self.threads = threads
         self.extensions = extensions
-        self.genes_gtf = genes_gtf,
+        self.genes_gtf = genes_gtf
 
     def sam_sorting(self):
 
@@ -35,7 +35,7 @@ class SamTools():
                 ]
 
                 command = ' '.join(command)
-                #sp.check_call(command, shell=True)
+                sp.check_call(command, shell=True)
 
                 print('\n' + ctw.CRED + 'Indexing: ' + ctw.CBLUE + os.path.basename(output_file) + ctw.CRED + ' ...' + ctw.CEND + '\n')
 
@@ -44,9 +44,9 @@ class SamTools():
                 ]
 
                 command = ' '.join(command)
-                #sp.check_call(command, shell=True)
+                sp.check_call(command, shell=True)
 
-        print(ctw.CBEIGE + ctw.CBOLD + 'Filtering, Sorting and Indexing Completed!!!' + ctw.CEND)
+        print(ctw.CBEIGE + ctw.CBOLD + 'Filtering, Sorting and Indexing Completed!!!' + ctw.CEND + '\n')
 
         #### Mapping quality control using Qualimap
         bam_files = sorted(glob.glob(outdir + '/' + '*.bam'))

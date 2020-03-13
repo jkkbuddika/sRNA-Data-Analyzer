@@ -23,14 +23,16 @@ class MultiQCRunner:
         for i in dir_list:
             print('\n' + ctw.CBEIGE + ctw.CBOLD + 'Generating MultiQC Reports for ' + i + ' ...' + ctw.CEND + '\n')
 
-            param = [
+            multiqc_report = i + '_MultiQC_Report.html'
+
+            command = [
                 'multiqc',
                 self.home_dir + i + '/',
                 '-o', outdir,
-                '-n', i + '_MultiQC_Report.html'
+                '-n', multiqc_report
             ]
 
-            command = ' '.join(param)
+            command = ' '.join(command)
             sp.check_call(command, shell=True)
 
         print('\n' + ctw.CBEIGE + ctw.CBOLD + 'Running MultiQC done!!!' + ctw.CEND)
