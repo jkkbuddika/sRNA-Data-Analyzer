@@ -83,3 +83,47 @@ ls
 ```
 > add_mat  
 > scripts
+
+### Step 4: Input data preparation
+The pipeline uses adapter trimmed input files in .fastq format for analysis. To make the "raw_sequences" on your home directory, navigate first to the home directory and create a directory *raw_sequences*.
+```
+mkdir raw_sequences
+ls
+```
+> add_mat  
+> raw_sequences   
+> scripts   
+
+Then upload adapter trimmed sequences to the raw_sequences directory. The naming of files is ***very important*** and follow the recommended naming scheme. Always the name of a file should end with ***'_R1.fastq'*** for single-end data inputs. If the input is paired-end, the name of two read mates should end with ***'_R1.fastq'*** and ***'_R2.fastq'***. During analysis the pipeline sorts and lists input files based on this architecture.
+### Step 5: Executing the pipeline
+All executables of the pipeline are written onto *run.py* module. To start analyzing data activate the conda environment above, navigate to the scripts directory and execute *run.py* using python.
+```
+source activate dataanalyzer
+cd scripts
+python run.py
+```
+## Analysis process
+All analyzed data will be saved onto the home directory where you created the *scripts* directory. The pipeline first use [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) to assess the quality of raw input files. Subsequently, the program [Cutadapt](https://cutadapt.readthedocs.io/en/stable/) is used to trim off standard illumina adaptors from the 3'-end of input reads. Next [TagDust2](http://tagdust.sourceforge.net/) is being used to remove rRNA contaminants from individual datasets. A datamining module in the pipeline will summarize TagDust2 rRNA removal logs and deposit mined data onto a file named **TagDust_summary.csv** which will be saved onto a directory named *summary_files*. Subsequently, user defined genome and annotation files will be downloaded and genome indices will be created. Subsequently, rRNA-depleted sequences are mapped to the given genome using [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) genome aligner. Additionally, this pipeline use [ShortStack](https://github.com/MikeAxtell/ShortStack) to identify all types of small RNAs from mapped sequences. The analysis scheme then uses [SAMtools](https://github.com/samtools/samtools) to coordinate sort, remove unmapped sequences and index Bowtie2 alignment output files. The pipeline subsequently use [QualiMap](http://qualimap.bioinfo.cipf.es/) to assess the quality of sequence alignment. The sorted alignment file and the index will be used by [deepTools](https://github.com/deeptools/deepTools/) to generate bigwig files for [IGV](https://software.broadinstitute.org/software/igv/) visualization. Next subread package [featureCounts](http://subread.sourceforge.net/) will be called to quantify user defined set of features. Finally, the pipeline integrates [MultiQC](https://github.com/ewels/MultiQC) to generate summary files in an interactive manner.
+## Retrieve additional information
+It is important to track the number of sequences retained after each step. You can use following bash commands to acheive this.
+1. If the directory of interest have a series of *.fastq* files, you can use the following bash command to get read counts saved into a *.txt* file in the same directory. As an example let's save read counts of the *raw_sequences* directory.
+```
+cd raw_sequences
+
+for i in `ls *.fastq`; do
+c=`cat $i | wc -l`
+c=$((c/4))
+echo $i $c
+done > raw_readCounts.txt
+```
+> Executing the above bash command will save a file named *raw_readCounts.txt* in the *raw_sequences* directory with file name and number of reads in each file.
+
+2. If the directory of interest have a series of *.bam* files, you can use the following bash command that uses [SAMtools](https://github.com/samtools/samtools). As an example let's save read counts of the *bt2_aligned* directory.
+```
+cd bt2_aligned
+
+for i in `ls *.bam`; do
+echo ${i} $(samtools view -F 4 -c $i)
+done > bam_readCounts_aligned.txt
+```
+> Executing the above bash command will save a file named *bam_readCounts_aligned.txt* in the *star_aligned* directory with bam file names and number of reads that are mapped to the reference genome. Note that the [sam flag] (https://broadinstitute.github.io/picard/explain-flags.html) ***4*** eliminates unmapped sequences from the count, thus giving the total number of sequences that are successfully aligned.
