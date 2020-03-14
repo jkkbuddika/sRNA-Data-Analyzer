@@ -5,16 +5,16 @@ This repository contain a series of python based modules to automate sequencing 
 ## Requirements
 The sRNA-seq data analyzer requires following tools to be installed for data analysis.
 
-- [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
-- [Cutadapt](https://cutadapt.readthedocs.io/en/stable/)
-- [TagDust2](http://tagdust.sourceforge.net/)
-- [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)
-- [QualiMap](http://qualimap.bioinfo.cipf.es/)
-- [ShortStack](https://github.com/MikeAxtell/ShortStack)
-- [SAMtools](https://github.com/samtools/samtools)
-- [deepTools](https://github.com/deeptools/deepTools/)
-- [Subread](http://subread.sourceforge.net/)
-- [MultiQC](https://github.com/ewels/MultiQC)
+- [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) : Quality assessment
+- [Cutadapt](https://cutadapt.readthedocs.io/en/stable/) : Adaptor trimming
+- [TagDust2](http://tagdust.sourceforge.net/) : Remove rRNA reads
+- [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) : Mapping reads to a given genome
+- [QualiMap](http://qualimap.bioinfo.cipf.es/) : Mapping quality assessment
+- [SAMtools](https://github.com/samtools/samtools) : Sorting and indexing of mapped reads
+- [deepTools](https://github.com/deeptools/deepTools/) : Generate bigwig files for IGV visualization
+- [Subread](http://subread.sourceforge.net/) : Count features
+- [MultiQC](https://github.com/ewels/MultiQC) : Summarize logs
+- [ShortStack](https://github.com/MikeAxtell/ShortStack) : Predict/identify small RNAs
 
 We thank developers of these valueble tools!
 
